@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import CharacterList from '../Components/CharacterList/CharacterList';
 
 function App() {
   return (
     <div className="App">
-     hello chiao
+     <CharacterList></CharacterList>
     </div>
   );
 }
