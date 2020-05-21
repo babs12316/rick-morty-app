@@ -4,7 +4,10 @@ const Chracter = ({name,image,species,status,gender,created}) => {
  //   console.log(`i am in character ${JSON.stringify(image)}`)
     return (
         <div className="row listItem">
+         <div className="col-sm-12 col-md-6 col-lg-6">   
        <img src={image} alt="characterimage"></img>
+       </div>
+        <div className="col-sm-12 col-md-6 col-lg-6">
         <table className="table">
           <tbody>
             <tr>
@@ -24,6 +27,7 @@ const Chracter = ({name,image,species,status,gender,created}) => {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       );

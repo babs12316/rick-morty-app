@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import SpeciesFilter from "../SpeciesFilter/SpeciesFilter";
 import "./CharacterList.css";
-import Pagination from '../Pagination/Pagination';
 const CharacterList = () => {
   const [characters, setCharacters] = useState([]);
   useEffect(() => {
@@ -11,17 +11,13 @@ const CharacterList = () => {
       setCharacters(data.results.map((character) => character));
     };
     fetchData();
-  },[]);
-
-      
+  }, []);
 
   return (
-    <div className="row list">
-        { characters&&
-        <Pagination characters={characters}></Pagination>
-          }
-  </div>
+    <div className="list">
+      <SpeciesFilter characters={characters}></SpeciesFilter>
+    </div>
   );
 };
 
-export default CharacterList;
+export default React.memo(CharacterList);
