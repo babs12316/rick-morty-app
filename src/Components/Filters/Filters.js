@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Pagination from "../Pagination/Pagination";
+import PropTypes from 'prop-types';
 import "./Filters.css";
-const Filters = (props) => {
+const Filters = ({characters}) => {
   const [species, setSpecies] = useState(null);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -40,7 +41,7 @@ const Filters = (props) => {
       <div className="row">
         <div className="col-sm-12">
           <Pagination
-            characters={props.characters}
+            characters={characters}
             selectedSpecies={species}
             startDate={startDate}
             endDate={endDate}
@@ -52,3 +53,7 @@ const Filters = (props) => {
 };
 
 export default Filters;
+
+Filters.propTypes = {
+characters:PropTypes.array
+};

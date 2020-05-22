@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Character from "../Character/Character";
-const Pagination = (props) => {
+import PropTypes from 'prop-types';
+const Pagination = ({characters,selectedSpecies,startDate,endDate}) => {
   //Get currentPage number
   const [currentItem, setCurrentItem] = useState(1);
   //set Number of items per page   slice(currentItem,currentItem+numberofItemsPerPage)
@@ -13,14 +14,13 @@ const Pagination = (props) => {
   //set filtered array
   const [characterList, setCharacterList] = useState();
 
-  console.log(`end date is ${props.startDate}`);
 
   useEffect(() => {
     //check if species filter is changed
-    if (props.selectedSpecies) {
+    if (selectedSpecies) {
       //filter species and assign to characterList
-      let filteredList = props.characters.filter(
-        (character) => character.species === props.selectedSpecies
+      let filteredList =characters.filter(
+        (character) => character.species === selectedSpecies
       );
       setCharacterList(filteredList);
       //if number of record found are less tha number of items per page then disable next page button
@@ -30,13 +30,14 @@ const Pagination = (props) => {
         setNextPageDisabled(false);
       }
       // Check if start and end date is changed
-    } else if (props.startDate && props.endDate) {
+    } else if (startDate && endDate) {
       //filter records according to date and assign to charcterList
-      let filteredList = props.characters.filter(
+      let filteredList = characters.filter(
         (character) =>
-          character.created.substring(0, 10) >= props.startDate &&
-          character.created.substring(0, 10) <= props.endDate
+          character.created.substring(0, 10) >= startDate &&
+          character.created.substring(0, 10) <= endDate
       );
+      
       setCharacterList(filteredList);
       //if number of record found are less tha number of items per page then disable next page button
       if (filteredList.length <= numberofItemsPerPage) {
@@ -46,9 +47,9 @@ const Pagination = (props) => {
       }
       //if no filter selected then get list directly from props
     } else {
-      setCharacterList(props.characters);
+      setCharacterList(characters);
     }
-  }, [props, numberofItemsPerPage]);
+  }, [characters,selectedSpecies,startDate,endDate, numberofItemsPerPage]);
 
   const handleNext = () => {
     let nextItem = currentItem + numberofItemsPerPage;
@@ -95,3 +96,10 @@ const Pagination = (props) => {
 };
 
 export default Pagination;
+
+Pagination.propTypes = {
+  characters: PropTypes.array,
+  selectedSpecies: PropTypes.string,
+  startDate: PropTypes.instanceOf(Date),
+  endDate: PropTypes.instanceOf(Date)
+};
