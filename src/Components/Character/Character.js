@@ -1,7 +1,7 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./Character.css";
-const Chracter = ({ name, image, species, status, gender, created }) => {
-  //   console.log(`i am in character ${JSON.stringify(image)}`)
+const Character = ({ name, image, species, status, gender, created }) => {
   return (
     <div className="row listItem">
       <div className="col-xs-12 col-sm-3 col-md-3 col-lg-4">
@@ -37,4 +37,13 @@ const Chracter = ({ name, image, species, status, gender, created }) => {
   );
 };
 
-export default Chracter;
+export default Character;
+
+Character.propTypes = {
+  name: PropTypes.string,
+  image:PropTypes.string,
+  species:PropTypes.string,
+   status:PropTypes.string,
+  gender:PropTypes.string,
+   created:PropTypes.any
+};
