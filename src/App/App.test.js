@@ -1,9 +1,15 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import { expect } from "chai";
+import { shallow } from "enzyme";
+import App from "./App";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("<App />", () => {
+  it("renders a `.container` class", () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find(".container")).to.have.lengthOf(1);
+  });
+  it("renders app title", () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.contains(<h2>Rick Morty App</h2>)).to.equal(true);
+  });
 });

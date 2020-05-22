@@ -16,14 +16,14 @@ const Pagination = (props) => {
   console.log(`end date is ${props.startDate}`);
 
   useEffect(() => {
-      //check if species filter is changed
+    //check if species filter is changed
     if (props.selectedSpecies) {
-        //filter species and assign to characterList
+      //filter species and assign to characterList
       let filteredList = props.characters.filter(
         (character) => character.species === props.selectedSpecies
       );
       setCharacterList(filteredList);
-       //if number of record found are less tha number of items per page then disable next page button
+      //if number of record found are less tha number of items per page then disable next page button
       if (filteredList.length <= numberofItemsPerPage) {
         setNextPageDisabled(true);
       } else {
@@ -31,14 +31,14 @@ const Pagination = (props) => {
       }
       // Check if start and end date is changed
     } else if (props.startDate && props.endDate) {
-        //filter records according to date and assign to charcterList
+      //filter records according to date and assign to charcterList
       let filteredList = props.characters.filter(
         (character) =>
           character.created.substring(0, 10) >= props.startDate &&
           character.created.substring(0, 10) <= props.endDate
       );
       setCharacterList(filteredList);
-     //if number of record found are less tha number of items per page then disable next page button
+      //if number of record found are less tha number of items per page then disable next page button
       if (filteredList.length <= numberofItemsPerPage) {
         setNextPageDisabled(true);
       } else {
@@ -85,7 +85,10 @@ const Pagination = (props) => {
         characterList
           .slice(currentItem, currentItem + numberofItemsPerPage)
           .map((character) => (
-           <a href={'/character/'+character.id} key={character.id}> <Character {...character}></Character></a>
+            <a href={"/character/" + character.id} key={character.id}>
+              {" "}
+              <Character {...character}></Character>
+            </a>
           ))}
     </div>
   );
