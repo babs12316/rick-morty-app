@@ -16,8 +16,9 @@ const Filters = (props) => {
 }
   return (
     <React.Fragment> 
-      <div className="row">
-      <div className="col-sm-6">
+      <div className="row filters">
+      <div className="col-sm-12 col-md-4 col-lg-4">
+        <label>Select species</label><br/>
       <select onChange={handleChange}>
         <option value="">Select species</option>
         <option value="">All species</option>
@@ -25,11 +26,11 @@ const Filters = (props) => {
         <option value="Alien">Alien</option>
       </select>
    </div>
-   <div className="col-sm-3 dates">
+   <div className="col-sm-12 col-md-3 col-lg-2 dates">
        <label>Start Date</label><br/>
       <input type="date" onChange={handleStartDateChange}></input>
       </div>
-      <div className="col-sm-3 dates">
+      <div className="col-sm-12 col-md-3 col-lg-2 dates">
       <label>End Date</label><br/>
       <input type="date" onChange={handleEndDateChange}></input>
     </div> 

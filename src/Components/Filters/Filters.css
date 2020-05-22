@@ -1,11 +1,18 @@
 select{
-    margin: 50px;
+ border-radius: 5px;
 }
-.dates{
-    margin-top: 25px;
+.filters {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    margin-top: -50px;
+    padding:10px;
+}
+input{
+    border-radius: 5px;
 }
 @media(max-width:575px){
     .dates{
-        margin: 25px;
+        margin: 5px;
     }
 }
+
