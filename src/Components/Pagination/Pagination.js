@@ -13,22 +13,42 @@ const Pagination = (props) => {
   //set filtered array
   const [characterList, setCharacterList] = useState();
 
+  console.log(`end date is ${props.startDate}`);
+
   useEffect(() => {
+      //check if species filter is changed
     if (props.selectedSpecies) {
+        //filter species and assign to characterList
       let filteredList = props.characters.filter(
         (character) => character.species === props.selectedSpecies
       );
-      
+      setCharacterList(filteredList);
+       //if number of record found are less tha number of items per page then disable next page button
       if (filteredList.length <= numberofItemsPerPage) {
         setNextPageDisabled(true);
-      }else{
+      } else {
         setNextPageDisabled(false);
       }
+      // Check if start and end date is changed
+    } else if (props.startDate && props.endDate) {
+        //filter records according to date and assign to charcterList
+      let filteredList = props.characters.filter(
+        (character) =>
+          character.created.substring(0, 10) >= props.startDate &&
+          character.created.substring(0, 10) <= props.endDate
+      );
       setCharacterList(filteredList);
+     //if number of record found are less tha number of items per page then disable next page button
+      if (filteredList.length <= numberofItemsPerPage) {
+        setNextPageDisabled(true);
+      } else {
+        setNextPageDisabled(false);
+      }
+      //if no filter selected then get list directly from props
     } else {
       setCharacterList(props.characters);
     }
-  }, [props.selectedSpecies, props.characters, numberofItemsPerPage]);
+  }, [props, numberofItemsPerPage]);
 
   const handleNext = () => {
     let nextItem = currentItem + numberofItemsPerPage;

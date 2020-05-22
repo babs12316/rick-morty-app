@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SpeciesFilter from "../SpeciesFilter/SpeciesFilter";
+import Filters from "../Filters/Filters";
 import "./CharacterList.css";
 const CharacterList = () => {
   const [characters, setCharacters] = useState([]);
@@ -15,7 +15,8 @@ const CharacterList = () => {
 
   return (
     <div className="list">
-      <SpeciesFilter characters={characters}></SpeciesFilter>
+      <Filters characters={characters}></Filters>
+   
     </div>
   );
 };
