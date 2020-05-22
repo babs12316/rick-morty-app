@@ -5,7 +5,7 @@ const CharacterList = () => {
   const [characters, setCharacters] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      let apiUrl = "https://rickandmortyapi.com/api/character/?name=";
+      let apiUrl = "https://rickandmortyapi.com/api/character/";
       const res = await fetch(apiUrl);
       const data = await res.json();
       setCharacters(data.results.map((character) => character));

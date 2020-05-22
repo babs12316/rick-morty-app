@@ -1,3 +1,11 @@
 select{
     margin: 50px;
 }
+.dates{
+    margin-top: 25px;
+}
+@media(max-width:575px){
+    .dates{
+        margin: 25px;
+    }
+}

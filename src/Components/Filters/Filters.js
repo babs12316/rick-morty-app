@@ -14,25 +14,39 @@ const Filters = (props) => {
   const handleEndDateChange=(e)=>{
     setEndDate(e.target.value)
 }
-  return ( 
+  return (
+    <React.Fragment> 
       <div className="row">
-      <div className="col-sm-12">
+      <div className="col-sm-6">
       <select onChange={handleChange}>
         <option value="">Select species</option>
         <option value="">All species</option>
         <option value="Human">Human</option>
         <option value="Alien">Alien</option>
       </select>
+   </div>
+   <div className="col-sm-3 dates">
+       <label>Start Date</label><br/>
       <input type="date" onChange={handleStartDateChange}></input>
+      </div>
+      <div className="col-sm-3 dates">
+      <label>End Date</label><br/>
       <input type="date" onChange={handleEndDateChange}></input>
+    </div> 
+    </div>
+    <div className="row">
+      <div className="col-sm-12">
       <Pagination
         characters={props.characters}
         selectedSpecies={species}
         startDate={startDate}
         endDate={endDate}
       ></Pagination>
+   
+      </div> 
     </div>
-    </div>
+    </React.Fragment>
+
   );
 };
 

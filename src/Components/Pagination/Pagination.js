@@ -4,7 +4,7 @@ const Pagination = (props) => {
   //Get currentPage number
   const [currentItem, setCurrentItem] = useState(1);
   //set Number of items per page   slice(currentItem,currentItem+numberofItemsPerPage)
-  const [numberofItemsPerPage] = useState(5);
+  const [numberofItemsPerPage] = useState(10);
   //Initally set Next button active
   const [nextPageDisabled, setNextPageDisabled] = useState(false);
   //Initally set previous button disabled
@@ -85,7 +85,7 @@ const Pagination = (props) => {
         characterList
           .slice(currentItem, currentItem + numberofItemsPerPage)
           .map((character) => (
-            <Character key={character.id} {...character}></Character>
+           <a href={'/character/'+character.id} key={character.id}> <Character {...character}></Character></a>
           ))}
     </div>
   );

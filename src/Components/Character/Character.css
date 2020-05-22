@@ -1,13 +1,17 @@
-.listItem{
-    margin:50px 0px;
+.listItem {
+  margin: 50px 0px;
+  padding: 0px;
+  border: 1px solid #ccc;
 }
-@media(min-width:767px){
-    .list table{
-        width:auto;
-        float: right;
-    }
-    .list img{
-        float:left;
-    }
-        
+@media (min-width: 992px) {
+  .list img {
+    margin-left: -5%;
+    float: left;
+  }
+}
+
+@media (max-width: 991px) {
+  .list img {
+    width: 90%;
+  }
 }
