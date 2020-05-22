@@ -4,23 +4,28 @@ const CharacterDetail = (props) => {
   const [gender, setGender] = useState(null);
   const [origin, setOrigin] = useState([]);
   const [episodes, setEpisodes] = useState([]);
+  const [error, setError] = useState(null);
 
   const { params } = props.match;
 
-  const fetchData = async () => {
-    let apiUrl = "https://rickandmortyapi.com/api/character/" + params.id;
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    setGender(data.gender);
-    const originArray = Object.keys(data.origin).map(function (key) {
-      return [data.origin[key]];
-    });
-    setOrigin(originArray);
-    setEpisodes(data.episode);
-  };
-
   useEffect(
     () => {
+      const fetchData = async () => {
+        try {
+          const apiUrl =
+            "https://rickandmortyapi.com/api/character/" + params.id;
+          const res = await fetch(apiUrl);
+          const data = await res.json();
+          setGender(data.gender);
+          const originArray = Object.keys(data.origin).map(function (key) {
+            return [data.origin[key]];
+          });
+          setOrigin(originArray);
+          setEpisodes(data.episode);
+        } catch (err) {
+          setError(err.message);
+        }
+      };
       fetchData();
     }, // eslint-disable-next-line
     []
@@ -29,6 +34,7 @@ const CharacterDetail = (props) => {
   return (
     <div>
       <h2>Character Details</h2>
+      {error && <div className="error">{error}</div>}
       <table className="table">
         <tbody>
           <tr>
