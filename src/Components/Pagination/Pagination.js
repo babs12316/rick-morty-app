@@ -31,15 +31,26 @@ const Pagination = ({characters,selectedSpecies,startDate,endDate}) => {
         setNextPageDisabled(false);
       }
       // Check if start and end date is changed
-    } else if (startDate && endDate) {
+    }  if (startDate && endDate) {
+      
       //filter records according to date and assign to charcterList
-      let filteredList = characters.filter(
+      let filteredList;
+      //if species is selected, then filter species also  
+      if(selectedSpecies){
+       filteredList = characters.filter(
         (character) =>
           character.created.substring(0, 10) >= startDate &&
-          character.created.substring(0, 10) <= endDate
+          character.created.substring(0, 10) <= endDate && character.species===selectedSpecies
       );
-      
+         }else{ // If no species selected then consider entire list
+          filteredList = characters.filter(
+            (character) =>
+              character.created.substring(0, 10) >= startDate &&
+              character.created.substring(0, 10) <= endDate
+          );
+       }
       setCharacterList(filteredList);
+    
       //if number of record found are less tha number of items per page then disable next page button
       if (filteredList.length <= numberofItemsPerPage) {
         setNextPageDisabled(true);
@@ -96,7 +107,7 @@ const Pagination = ({characters,selectedSpecies,startDate,endDate}) => {
   );
 };
 
-export default Pagination;
+export default React.memo(Pagination);
 
 Pagination.propTypes = {
   characters: PropTypes.array,

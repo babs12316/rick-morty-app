@@ -37,7 +37,7 @@ const Character = ({ name, image, species, status, gender, created }) => {
   );
 };
 
-export default Character;
+export default React.memo(Character);
 
 Character.propTypes = {
   name: PropTypes.string,

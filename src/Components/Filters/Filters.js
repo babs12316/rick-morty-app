@@ -52,7 +52,7 @@ const Filters = ({characters}) => {
   );
 };
 
-export default Filters;
+export default React.memo(Filters);
 
 Filters.propTypes = {
 characters:PropTypes.array
