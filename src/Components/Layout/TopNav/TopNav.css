@@ -1,0 +1,12 @@
+.topNav{
+   background: #f48024;
+    position: absolute;
+    top:0px;
+    color:#fff;
+    width:100%;
+    text-align: center;
+}
+.topNav a{
+    color:#fff;
+    
+}

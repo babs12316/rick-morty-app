@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import TopNav from '../Layout/TopNav/TopNav';
+import BottomNav from '../Layout/BottomNav/BottomNav';
+import './CharacterDetail.css';
 const CharacterDetail = (props) => {
   const [gender, setGender] = useState(null);
   const [origin, setOrigin] = useState([]);
@@ -32,7 +34,8 @@ const CharacterDetail = (props) => {
   );
 
   return (
-    <div>
+    <React.Fragment>
+      <TopNav></TopNav>
       <h2>Character Details</h2>
       {error && <div className="error">{error}</div>}
       <table className="table">
@@ -59,7 +62,8 @@ const CharacterDetail = (props) => {
           </tr>
         </tbody>
       </table>
-    </div>
+      <BottomNav></BottomNav>
+    </React.Fragment>
   );
 };
 

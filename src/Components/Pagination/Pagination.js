@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Character from "../Character/Character";
 import PropTypes from 'prop-types';
+
 const Pagination = ({characters,selectedSpecies,startDate,endDate}) => {
   //Get currentPage number
   const [currentItem, setCurrentItem] = useState(1);
@@ -86,7 +87,7 @@ const Pagination = ({characters,selectedSpecies,startDate,endDate}) => {
         characterList
           .slice(currentItem, currentItem + numberofItemsPerPage)
           .map((character) => (
-            <a href={"/character/" + character.id} key={character.id}>
+            <a href={"/character/" + character.id} key={character.id} alt="click to see detail view" className="characterLink">
               {" "}
               <Character {...character}></Character>
             </a>
