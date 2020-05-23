@@ -101,6 +101,6 @@ export default Pagination;
 Pagination.propTypes = {
   characters: PropTypes.array,
   selectedSpecies: PropTypes.string,
-  startDate: PropTypes.instanceOf(Date),
-  endDate: PropTypes.instanceOf(Date)
+  startDate: PropTypes.any,
+  endDate: PropTypes.any
 };
